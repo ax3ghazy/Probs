@@ -14,7 +14,8 @@
 #include <stack>
 #include <list>
 #include <string>
-#include <cstring> #include <cctype>
+#include <cstring>
+#include <cctype>
 #include <climits>
 #include <cmath>
 #include <functional>
@@ -47,10 +48,54 @@ typedef vector<int> vi;
 #define viii vector<iii>
 #define pque priority_queue
 
+iii A[1005];
+int nex[1005], memo[1005];
+int n = 0, a;
+
+int LIS(int i){
+	int &ans = memo[i], &ne = nex[i];
+	if (ans != 0)
+		return ans;
+
+	for (int j = i+1; j < n; j++){
+		if (A[j].second.first < A[i].second.first && A[j].first != A[i].first){
+			int lisNext = LIS(j);
+			if (lisNext > ans){
+				ans = lisNext;
+				ne = j;
+			}
+		}
+	}
+	return ++ans;
+}
+
 
 int main(){
 	ios_base::sync_with_stdio(false);
-	//solution
+	while (cin >> A[n].first >> A[n].second.first){
+		A[n].second.second = n;
+		n++;
+	}
+	sort(A, A+n);
+
+	memset(memo, 0, sizeof(memo));
+	a = -1;
+	int start;
+	for (int i = 0; i < n; i++){
+		int val = LIS(i);
+		if (val > a){
+			a = val;
+			start = i;
+		}
+	}
+	cout << a << '\n';
+	while (a--){
+		int ind = A[start].second.second+1;
+		cout << ind << '\n';
+		start = nex[start];
+	}
+
+
 
 
 
