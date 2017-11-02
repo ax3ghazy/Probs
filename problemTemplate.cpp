@@ -22,7 +22,7 @@ using namespace std;
 //typedef later
 #define ii pair<int,int>
 #define iii pair<int,ii>
-typedef vector<int> vi;
+#define vi vector<int>
 #define vii vector<ii>
 #define viii vector<iii>
 #define pque priority_queue
