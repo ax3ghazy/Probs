@@ -1,25 +1,4 @@
-#include <iostream>
-#include <iomanip>
-#include <sstream>
-#include <bitset>
-#include <cstdio>
-#include <ctime>
-#include <chrono> //C++11
-#include <algorithm>
-#include <map>
-#include <utility>
-#include <set>
-#include <vector>
-#include <queue>
-#include <stack>
-#include <list>
-#include <string>
-#include <cstring>
-#include <cctype>
-#include <climits>
-#include <cmath>
-#include <functional>
-#include <cstring>
+#include <bits/stdc++.h>
 using namespace std;
 
 #define inf 0x7fffffff //32-bit int
