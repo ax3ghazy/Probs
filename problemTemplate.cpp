@@ -15,6 +15,7 @@ using namespace std;
 #define setAll(S, n) (S = (1 << n) - 1)
 
 
+typedef long long ll;
 typedef pair<int,int> ii
 typedef pair<int,ii> iii
 typedef vector<int> vi;
