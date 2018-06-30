@@ -25,6 +25,35 @@ typedef vector<iii> viii;
 int main(){
 	ios_base::sync_with_stdio(false);
 	cin.tie(NULL);
+	int N; cin >> N;
+	for (int i = 1; i <= N; i++){
+		int R, C; cin >> C >> R;
+		int Qtot = C-R;
+		cout << "Case #" << i << ":";
+		if (Qtot == 0)
+			cout << ' ' << 0 << '\n';
+		else {
+			set<int> divisors;
+			if (1 > R)
+				divisors.insert(1);
+			if (Qtot > R)
+				divisors.insert(Qtot);
+			for (int d = 2; d*d <= Qtot; d++){
+				if (Qtot%d == 0){
+					int quot = Qtot/d;
+					if (quot > R){
+						divisors.insert(quot);
+						if (d > R)
+							divisors.insert(d);
+					} else
+						break;
+				}
+			}
+			for (auto &d : divisors)
+				cout << ' ' << d;
+			cout << '\n';
+		}
+	}
 
 	return 0;
 }
