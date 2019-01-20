@@ -18,6 +18,11 @@ class fenwickTree {
 			ft.assign(n+1, 0);
 		}
 
+        void adjust(int k, int v) {
+            for (; k < (int)ft.size(); k += rmOne(k))
+                ft[k] += v;
+        }
+
 		void update (int i, int diff){
 			i++;
 			while (i<ft.size()){
@@ -49,11 +54,16 @@ int main() {
 	fenwickTree ft(n);
 	for (int i = 0; i < n; i++)
 		cout << A[i]+ft.rsq(i) << ' ';
+    cout << endl;
 	ft.update(5, -1);
+	for (int i = 0; i < n; i++)
+		cout << A[i]+ft.rsq(i) << ' ';
+    cout << endl;
 	ft.update(6, -1);
 	cout << '\n';
 	for (int i = 0; i < n; i++)
 		cout << A[i]+ft.rsq(i) << ' ';
+    cout << endl;
 	
 
 	return 0;

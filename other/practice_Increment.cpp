@@ -34,27 +34,17 @@ typedef vector<iii> viii;
 int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-
-    int x, y, z;
-    cin >> x >> y >> z;
-    if (x == y) {
-        if (z == x)
-            cout << 1;
-        else
-            cout << -1;
-    } else {
-        int r = y % (x-y), rp = z % (x-y);
-        if (r == rp) {
-            int i = (z-y)/(x-y);
-            cout << 2*i-1;
-        } else if (rp == 0) {
-            int i = (x-y)/z;
-            cout << 2*i;
-        } else {
-            cout << -1;
+    char d;
+    bool allnines = true;
+    int digs = 0;
+    while (d = cin.get(), isdigit(d)) {
+        digs++;
+        if (d != '9') {
+            allnines = false;
         }
     }
-    cout << endl;
+
+    cout << digs + allnines << endl;
 
     return 0;
 }

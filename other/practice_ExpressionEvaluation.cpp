@@ -28,33 +28,31 @@ typedef vector<int> vi;
 typedef vector<ii> vii;
 typedef vector<iii> viii;
 
-#define endl '\n'
+char sign, c, p;
+ll sum;
 
+int readnum() { //surely incoming
+    string num = "";
+    do {
+        cin >> c;
+        num += c;
+        p = cin.peek();
+    } while (p != EOF && isdigit(p));
+    return stoi(num);
+}
 
 int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
+    sum = 0;
+    sign = '+';
+    do {
+        //cerr << sum << endl;
+        sum = sum + ((sign == '+')? 1 : -1) * readnum();
+    } while (cin >> sign);
 
-    int x, y, z;
-    cin >> x >> y >> z;
-    if (x == y) {
-        if (z == x)
-            cout << 1;
-        else
-            cout << -1;
-    } else {
-        int r = y % (x-y), rp = z % (x-y);
-        if (r == rp) {
-            int i = (z-y)/(x-y);
-            cout << 2*i-1;
-        } else if (rp == 0) {
-            int i = (x-y)/z;
-            cout << 2*i;
-        } else {
-            cout << -1;
-        }
-    }
-    cout << endl;
+    cout << sum << endl;
+
 
     return 0;
 }

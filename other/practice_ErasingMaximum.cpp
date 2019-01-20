@@ -30,31 +30,38 @@ typedef vector<iii> viii;
 
 #define endl '\n'
 
+int n, mx = 0, occ = 0;
+int A[101];
 
 int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
+    cin >> n;
+    for (int i = 0; i < n; i++) {
+        cin >> A[i];
+        if (A[i] > mx) {
+            mx = A[i];
+            occ = 1;
+        } else if (A[i] == mx) {
+            occ++;
+        }
+    }
+    occ = min(occ, 3)-1;
+    for (int i = 0; i < n; i++) {
+        if (A[i] != mx || occ) {
+            cout << A[i] << (i < n-1? " " : "");
+        }
 
-    int x, y, z;
-    cin >> x >> y >> z;
-    if (x == y) {
-        if (z == x)
-            cout << 1;
-        else
-            cout << -1;
-    } else {
-        int r = y % (x-y), rp = z % (x-y);
-        if (r == rp) {
-            int i = (z-y)/(x-y);
-            cout << 2*i-1;
-        } else if (rp == 0) {
-            int i = (x-y)/z;
-            cout << 2*i;
-        } else {
-            cout << -1;
+        if (A[i] == mx) {
+            occ--;
         }
     }
     cout << endl;
+
+
+
+
+
 
     return 0;
 }

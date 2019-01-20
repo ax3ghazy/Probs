@@ -30,31 +30,26 @@ typedef vector<iii> viii;
 
 #define endl '\n'
 
+ll n, sum = 0;
+ll A[2000];
 
 int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
+    cin >> n;
+    for (int i = 0; i < n; i++) {
+        cin >> A[i];
+    }
 
-    int x, y, z;
-    cin >> x >> y >> z;
-    if (x == y) {
-        if (z == x)
-            cout << 1;
-        else
-            cout << -1;
-    } else {
-        int r = y % (x-y), rp = z % (x-y);
-        if (r == rp) {
-            int i = (z-y)/(x-y);
-            cout << 2*i-1;
-        } else if (rp == 0) {
-            int i = (x-y)/z;
-            cout << 2*i;
-        } else {
-            cout << -1;
+    for (int l = 0; l < n; l++) {
+        ll min_so_far = A[l];
+        for (int r = l; r < n; r++) {
+            min_so_far = (min_so_far < A[r])? min_so_far : A[r];
+            sum += min_so_far;
         }
     }
-    cout << endl;
+
+    cout << sum << endl;
 
     return 0;
 }

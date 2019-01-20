@@ -19,7 +19,8 @@ using namespace std;
 #define toggleBit(S, j) (S ^= (1 << j))
 #define lowBit(S) (S & (-S))
 #define setAll(S, n) (S = (1 << n) - 1)
-#define pque priority_queue
+#define rmOne(S) (S & (-S))
+#define pque priority_queue 
 
 typedef long long ll;
 typedef pair<int,int> ii;
@@ -29,32 +30,39 @@ typedef vector<ii> vii;
 typedef vector<iii> viii;
 
 #define endl '\n'
-
+int n, m;
+int rounds = 1;
+int freqs[100005];
 
 int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
+    cin >> n >> m;
+    multiset<int> topfreqs;
+    for (int i = 0; i < n; i++) {
+        topfreqs.insert(0);
+    }
 
-    int x, y, z;
-    cin >> x >> y >> z;
-    if (x == y) {
-        if (z == x)
+    for (int i = 0; i < m; i++) {
+        int diff;
+        cin >> diff;
+        topfreqs.erase(topfreqs.find(freqs[diff]));
+        freqs[diff]++;
+        topfreqs.insert(freqs[diff]);
+        if(*topfreqs.begin() == rounds) {
+            rounds++;
             cout << 1;
-        else
-            cout << -1;
-    } else {
-        int r = y % (x-y), rp = z % (x-y);
-        if (r == rp) {
-            int i = (z-y)/(x-y);
-            cout << 2*i-1;
-        } else if (rp == 0) {
-            int i = (x-y)/z;
-            cout << 2*i;
         } else {
-            cout << -1;
+            cout << 0;
         }
     }
     cout << endl;
 
+
+
+
+
+
     return 0;
 }
+

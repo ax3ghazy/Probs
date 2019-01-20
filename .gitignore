@@ -1,7 +1,9 @@
 problem.cpp
 in
 out
+out_correct
 solve
 gen
 check
 a.out
+*.pdf
