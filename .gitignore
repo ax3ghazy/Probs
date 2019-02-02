@@ -1,6 +1,6 @@
 problem.cpp
-in
-out
+in*
+out*
 out_correct
 solve
 gen
