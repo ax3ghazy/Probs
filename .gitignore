@@ -7,3 +7,7 @@ gen
 check
 a.out
 *.pdf
+GTAGS
+GRTAGS
+GPATH
+\#*
